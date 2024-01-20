@@ -2,8 +2,9 @@ use std::collections::{HashMap, BTreeMap};
 
 use battlebit_api::{ServerData, BBApi, Gamemode};
 
+use itertools::Itertools;
 use yew::prelude::*;
-use gloo::timers::callback::Timeout;
+use gloo::{timers::callback::Timeout, console::log};
 
 
 use ybc::TileCtx::{Ancestor, Child, Parent};
@@ -21,7 +22,7 @@ pub struct App {
 
 impl App {
     fn region_count(&self) -> HashMap<String, usize> {
-        self.server_data.iter().fold(HashMap::new(), |mut counts, server| {
+        let counts = self.server_data.iter().fold(HashMap::new(), |mut counts, server| {
             let region = server.region().to_string();
 
             match counts.get_mut(&region) {
@@ -30,7 +31,9 @@ impl App {
             }
 
             counts
-        })
+        });
+
+        counts
     }
 
     fn map_count(&self) -> HashMap<String, usize> {
@@ -127,10 +130,7 @@ impl Component for App {
     fn view(&self, _ctx: &yew::prelude::Context<Self>) -> Html {
         let maps = self.map_count()
             .into_iter()
-            .map(|(k,v)| (v,k))
-            .collect::<BTreeMap<usize, String>>()
-            .into_iter()
-            .rev()
+            .sorted_by(|a, b| b.1.cmp(&a.1))
             .map(|(count, item)| {
                 html!{ <> {format!("{item} ({count})")} <br/> </> }
             })
@@ -138,10 +138,7 @@ impl Component for App {
 
         let gamemodes = self.gamemode_count()
             .into_iter()
-            .map(|(k,v)| (v,k))
-            .collect::<BTreeMap<usize, String>>()
-            .into_iter()
-            .rev()
+            .sorted_by(|a, b| b.1.cmp(&a.1))
             .map(|(count, item)| {
                 html!{ <> {format!("{item} ({count})")} <br/> </> }
             })
@@ -149,10 +146,7 @@ impl Component for App {
 
         let regions = self.region_count()
             .into_iter()
-            .map(|(k,v)| (v,k))
-            .collect::<BTreeMap<usize, String>>()
-            .into_iter()
-            .rev()
+            .sorted_by(|a, b| b.1.cmp(&a.1))
             .map(|(count, item)| {
                 html!{ <> {format!("{item} ({count})")} <br/> </> }
             })
