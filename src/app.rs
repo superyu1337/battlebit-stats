@@ -148,7 +148,7 @@ impl Component for App {
             .into_iter()
             .sorted_by(|a, b| b.1.cmp(&a.1))
             .map(|(item, count)| {
-                html!{ <> {format!("{item} ({count})")} <br/> </> }
+                html!{<>{format!("{item} ({count})")}<br/></>}
             })
             .collect::<Vec<Html>>();
 
@@ -175,25 +175,25 @@ impl Component for App {
                         <ybc::Tile ctx={Parent} size={ybc::TileSize::Twelve}>
                             <ybc::Tile ctx={Parent}>
                                 <ybc::Tile ctx={Child} classes={classes!("notification", "is-primary")}>
-                                    <ybc::Subtitle size={ybc::HeaderSize::Is3} classes={classes!("has-text-white")}>{"Players"}</ybc::Subtitle>
+                                    <ybc::Subtitle size={ybc::HeaderSize::Is3} classes={classes!("has-text-white", "mb-0")}>{"Players"}</ybc::Subtitle>
                                     {format!("{} are playing, with another {} in the queue. ", player_count.0, player_count.1)}
                                 </ybc::Tile>
                             </ybc::Tile>
                             <ybc::Tile ctx={Parent}>
                                 <ybc::Tile ctx={Child} classes={classes!("notification", "is-primary")}>
-                                    <ybc::Subtitle size={ybc::HeaderSize::Is3} classes={classes!("has-text-white")}>{"Regions"}</ybc::Subtitle>
+                                    <ybc::Subtitle size={ybc::HeaderSize::Is3} classes={classes!("has-text-white", "mb-0")}>{"Regions"}</ybc::Subtitle>
                                     { regions }
                                 </ybc::Tile>
                             </ybc::Tile>
                             <ybc::Tile ctx={Parent}>
                                 <ybc::Tile ctx={Child} classes={classes!("notification", "is-primary")}>
-                                    <ybc::Subtitle size={ybc::HeaderSize::Is3} classes={classes!("has-text-white")}>{"Gamemodes"}</ybc::Subtitle>
+                                    <ybc::Subtitle size={ybc::HeaderSize::Is3} classes={classes!("has-text-white", "mb-0")}>{"Gamemodes"}</ybc::Subtitle>
                                     { gamemodes }
                                 </ybc::Tile>
                             </ybc::Tile>
                             <ybc::Tile ctx={Parent}>
                                 <ybc::Tile ctx={Child} classes={classes!("notification", "is-primary")}>
-                                    <ybc::Subtitle size={ybc::HeaderSize::Is3} classes={classes!("has-text-white")}>{"Maps"}</ybc::Subtitle>
+                                    <ybc::Subtitle size={ybc::HeaderSize::Is3} classes={classes!("has-text-white", "mb-0")}>{"Maps"}</ybc::Subtitle>
                                     { maps }
                                 </ybc::Tile>
                             </ybc::Tile>
