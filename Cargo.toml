@@ -8,6 +8,5 @@ edition = "2021"
 [dependencies]
 battlebit-api = "0.1.7"
 gloo = "0.11.0"
-# this is the development version of Yew
 yew = { version = "0.20.0", features = ["csr"] }
 ybc = "0.4.0"
