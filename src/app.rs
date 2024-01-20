@@ -131,7 +131,7 @@ impl Component for App {
         let maps = self.map_count()
             .into_iter()
             .sorted_by(|a, b| b.1.cmp(&a.1))
-            .map(|(count, item)| {
+            .map(|(item, count)| {
                 html!{ <> {format!("{item} ({count})")} <br/> </> }
             })
             .collect::<Vec<Html>>();
@@ -139,7 +139,7 @@ impl Component for App {
         let gamemodes = self.gamemode_count()
             .into_iter()
             .sorted_by(|a, b| b.1.cmp(&a.1))
-            .map(|(count, item)| {
+            .map(|(item, count)| {
                 html!{ <> {format!("{item} ({count})")} <br/> </> }
             })
             .collect::<Vec<Html>>();
@@ -147,7 +147,7 @@ impl Component for App {
         let regions = self.region_count()
             .into_iter()
             .sorted_by(|a, b| b.1.cmp(&a.1))
-            .map(|(count, item)| {
+            .map(|(item, count)| {
                 html!{ <> {format!("{item} ({count})")} <br/> </> }
             })
             .collect::<Vec<Html>>();
