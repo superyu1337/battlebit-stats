@@ -181,12 +181,6 @@ impl Component for App {
                             </ybc::Tile>
                             <ybc::Tile ctx={Parent}>
                                 <ybc::Tile ctx={Child} classes={classes!("notification", "is-primary")}>
-                                    <ybc::Subtitle size={ybc::HeaderSize::Is3} classes={classes!("has-text-white")}>{"Maps"}</ybc::Subtitle>
-                                    { maps }
-                                </ybc::Tile>
-                            </ybc::Tile>
-                            <ybc::Tile ctx={Parent}>
-                                <ybc::Tile ctx={Child} classes={classes!("notification", "is-primary")}>
                                     <ybc::Subtitle size={ybc::HeaderSize::Is3} classes={classes!("has-text-white")}>{"Regions"}</ybc::Subtitle>
                                     { regions }
                                 </ybc::Tile>
@@ -195,6 +189,12 @@ impl Component for App {
                                 <ybc::Tile ctx={Child} classes={classes!("notification", "is-primary")}>
                                     <ybc::Subtitle size={ybc::HeaderSize::Is3} classes={classes!("has-text-white")}>{"Gamemodes"}</ybc::Subtitle>
                                     { gamemodes }
+                                </ybc::Tile>
+                            </ybc::Tile>
+                            <ybc::Tile ctx={Parent}>
+                                <ybc::Tile ctx={Child} classes={classes!("notification", "is-primary")}>
+                                    <ybc::Subtitle size={ybc::HeaderSize::Is3} classes={classes!("has-text-white")}>{"Maps"}</ybc::Subtitle>
+                                    { maps }
                                 </ybc::Tile>
                             </ybc::Tile>
                         </ybc::Tile>
